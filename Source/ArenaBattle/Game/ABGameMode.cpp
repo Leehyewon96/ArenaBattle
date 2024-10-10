@@ -8,15 +8,21 @@
 AABGameMode::AABGameMode()
 {
 	//DefaultPawnClass
-	static ConstructorHelpers::FClassFinder<APawn> ThirdPersonClassRef(TEXT("/Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.BP_ThirdPersonCharacter_C"));
+	/*static ConstructorHelpers::FClassFinder<APawn> ThirdPersonClassRef(TEXT("/Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.BP_ThirdPersonCharacter_C"));
 	if (ThirdPersonClassRef.Class)
 	{
 		DefaultPawnClass = ThirdPersonClassRef.Class;
+	}*/
+
+	static ConstructorHelpers::FClassFinder<APawn> DefaultPawnClassRef(TEXT("/Script/ArenaBattle.ABCharacterPlayer"));
+	if (DefaultPawnClassRef.Class)
+	{
+		DefaultPawnClass = DefaultPawnClassRef.Class;
 	}
 
 	//PlayerController
 	//PlayerControllerClass = AABPlayerController::StaticClass();
-	
+
 	static ConstructorHelpers::FClassFinder<APlayerController> PlayerControllerRef(TEXT("/Script/ArenaBattle.ABPlayerController"));
 	if (PlayerControllerRef.Class)
 	{
